@@ -1,8 +1,8 @@
 # 用 LSTM 預測台股
 
-James Chen · jameschen108@gmail.com · [English](README.md)
+Jing-Zhi Chen · jameschen108@gmail.com · [English](README.md)
 
-我用 LSTM 預測台股五檔權值股（2330 台積電、2317 鴻海、2603 長榮、2002 中鋼、
+使用 LSTM 預測台股五檔權值股（2330 台積電、2317 鴻海、2603 長榮、2002 中鋼、
 2891 中信金）的次日收盤價，再用模型的預測驅動一個 long/flat 的交易策略。
 
 **結果是不行。** 模型沒有勝過「明天的價格 = 今天的價格」，策略也沒有勝過直接買進並

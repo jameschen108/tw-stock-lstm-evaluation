@@ -4,9 +4,9 @@
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](pyproject.toml)
 
-James Chen · jameschen108@gmail.com · [中文版](README.zh-TW.md)
+Jing-Zhi Chen · jameschen108@gmail.com · [中文版](README.zh-TW.md)
 
-I trained an LSTM to predict the next-day closing price of five Taiwan large caps
+trained an LSTM to predict the next-day closing price of five Taiwan large caps
 (2330 TSMC, 2317 Hon Hai, 2603 Evergreen, 2002 China Steel, 2891 CTBC), then used its
 predictions to drive a long/flat trading strategy.
 
