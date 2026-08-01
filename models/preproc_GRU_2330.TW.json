@@ -1,0 +1,10 @@
+{
+  "mode": "window_return",
+  "seq_length": 10,
+  "ticker": "2330.TW",
+  "model_type": "GRU",
+  "feature_set": "close",
+  "feature_names": [
+    "Close"
+  ]
+}

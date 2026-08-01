@@ -1,0 +1,17 @@
+# Pinned to the versions every number in README.md was produced under.
+# TensorFlow's minor releases change initialisation and reduction order, so
+# an unpinned install reproduces the code but not the results.
+# Tested on Python 3.12.4.
+tensorflow==2.21.0
+keras==3.15.0
+numpy==2.5.1
+pandas==3.0.5
+scikit-learn==1.9.0
+scipy==1.18.0
+yfinance==1.5.2
+matplotlib==3.11.1
+openpyxl==3.1.5
+fastapi==0.140.0
+pydantic==2.13.4
+uvicorn[standard]==0.51.0
+pytest==9.1.1

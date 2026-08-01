@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stockai"
+version = "1.0.0"
+description = "Empirical evaluation of LSTM next-day return prediction on Taiwan equities"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "James Chen", email = "jameschen108@gmail.com" }]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Run from the repo root; this puts src/ on the path without the
+# sys.path.insert hack the test module used to carry.
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning:keras.*",
+    "ignore::UserWarning:keras.*",
+]
