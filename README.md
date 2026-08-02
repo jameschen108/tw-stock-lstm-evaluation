@@ -6,7 +6,7 @@
 
 Jing-Zhi Chen · jameschen108@gmail.com · [中文版](README.zh-TW.md)
 
-trained an LSTM to predict the next-day closing price of five Taiwan large caps
+Trained an LSTM to predict the next-day closing price of five Taiwan large caps
 (2330 TSMC, 2317 Hon Hai, 2603 Evergreen, 2002 China Steel, 2891 CTBC), then used its
 predictions to drive a long/flat trading strategy.
 
