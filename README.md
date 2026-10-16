@@ -33,8 +33,9 @@ Direction accuracy is 0.4971 over 1,524 out-of-sample trading days — a coin fl
 ### Why "no change" is the baseline to beat
 
 Stock prices barely move day to day, so predicting "tomorrow = today" already scores
-R² = 0.9968 on 2330. My model scores R² = 0.9841 — which looks excellent until you
-compare it to the baseline it loses to.
+R² = 0.9845, averaged over the five stocks (single 80/20 split, test period 2024–2026,
+5 seeds). My model scores R² = 0.9841 — which looks excellent until you compare it to
+the baseline it loses to.
 
 | How you report it | Number | Impression |
 |---|---|---|
@@ -64,7 +65,10 @@ saturates and under-predicts. Fit it over the whole series and everything stays 
 [0, 1] — but only because the test period's high and low set the boundaries, which is the
 leak you were trying to avoid.
 
-Measured on 2330, same architecture and split, only the normalisation differing:
+Measured on 2330 alone (same 80/20 split as above, seeds 0–2), same architecture, only
+the normalisation differing. On this one stock the model and the baseline both reach
+R² = 0.9968, so the small positive skill in the last row is a near-tie on 2330, not a
+contradiction of the five-stock result above:
 
 | Normalisation | RMSE | R² | vs baseline |
 |---|---|---|---|
