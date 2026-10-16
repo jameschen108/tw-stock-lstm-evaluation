@@ -211,7 +211,7 @@ def run_walk_forward(
     )
 
     # Keep every seed's equity curve, not just the last one. A single curve
-    # would misrepresent the spread that section 3.5 of the README documents.
+    # would misrepresent the spread that section 5 of the README documents.
     equity = pd.DataFrame({
         f"strategy_seed{seed}": d["strategy_equity"] for seed, d in details.items()
     })

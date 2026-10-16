@@ -7,8 +7,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Source plus the trained weights and their preprocessing specs. See
-# .dockerignore for what is deliberately left out of the image.
+# Only the source plus the trained weights and their preprocessing specs;
+# reports, tests and data are deliberately left out of the image.
 COPY src/ src/
 COPY models/ models/
 

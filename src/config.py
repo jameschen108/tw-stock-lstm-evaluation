@@ -75,8 +75,8 @@ SPLIT_RATIO = 0.8                   # train/test split for evaluation
 # Fraction of the *training* rows held back for model selection in
 # src/train.py (checkpointing and early stopping). Carved off the end of the
 # training segment, never taken from the test set: choosing weights by
-# test-set loss and then reporting test-set metrics is the mistake README
-# section 4.4 is about.
+# test-set loss and then reporting test-set metrics would make the reported
+# skill a training-time quantity.
 VAL_RATIO = 0.1
 INITIAL_CAPITAL = 100_000           # starting capital for backtest, in TWD
 RISK_FREE_RATE = 0.0                # annualised, used by the Sharpe ratio

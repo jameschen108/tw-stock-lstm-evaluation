@@ -11,8 +11,8 @@ preproc) pair per ticker and model type.
 Model selection (checkpointing and early stopping) runs against a
 validation tail carved out of the *training* segment, never against the
 test set. Selecting weights on the same rows you then report metrics on is
-the mistake README section 4.4 is about; it would make the reported skill
-score a training-time quantity.
+what this avoids; it would make the reported skill score a training-time
+quantity.
 
 Test-set metrics are always reported next to the naive persistence
 baseline - see src/metrics.py for why that matters.

@@ -342,7 +342,7 @@ def _print_contrasts(contrasts: pd.DataFrame) -> None:
 
 
 def _compare_architectures(paths) -> None:
-    """Print the paired architecture table in README section 3.2."""
+    """Print the paired architecture table in README section 3."""
     import glob
     import re
 
@@ -378,8 +378,8 @@ def main():
     parser = argparse.ArgumentParser(description="Run the feature ablation study.")
     parser.add_argument(
         "--compare-architectures", nargs="*", metavar="REPORT",
-        help="Skip training; print the paired architecture table (README 3.2) from "
-             "existing Ablation_<MODEL>_*.xlsx reports. Defaults to all of them.",
+        help="Skip training; print the paired architecture table (README section 3) "
+             "from existing Ablation_<MODEL>_*.xlsx reports. Defaults to all of them.",
     )
     parser.add_argument("--ticker", action="append", dest="tickers",
                         help="Repeatable; defaults to the whole portfolio.")

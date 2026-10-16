@@ -178,8 +178,8 @@ def test_training_validation_never_touches_the_test_set(tmp_path, monkeypatch):
 
     train.py used to pass (X_test, y_test) as validation_data and checkpoint
     on val_loss, then print a test-set skill score for the weights it had
-    just chosen using that same data - the mistake README section 4.4 is
-    about. The validation split must come out of the training segment.
+    just chosen using that same data. The validation split must come out of
+    the training segment.
     """
     monkeypatch.setattr(config, "weights_path", lambda ticker, mt="LSTM": tmp_path / f"best_{mt}_{ticker}.weights.h5")
     monkeypatch.setattr(config, "preproc_path", lambda ticker, mt="LSTM": tmp_path / f"preproc_{mt}_{ticker}.json")
@@ -655,8 +655,9 @@ def _fake_arch_runs(offset: float, noise_seed: int, noise: float = 0.01) -> pd.D
 
 
 def test_architecture_contrast_reports_indistinguishable_when_models_match():
-    """The claim in README 3.2 is that the architectures cannot be told apart;
-    the function must be able to say that rather than always ranking them."""
+    """The claim in README section 3 is that the architectures cannot be told
+    apart; the function must be able to say that rather than always ranking
+    them."""
     from src.experiment import architecture_contrasts
 
     out = architecture_contrasts({
@@ -693,7 +694,7 @@ def test_architecture_contrast_detects_a_real_gap_through_ticker_noise():
 def test_sensitivity_regimes_differ_in_what_the_scaler_saw():
     """The leaky and leak-free MinMax arms must actually differ as claimed.
 
-    Without this, the sensitivity table in README section 4.1 could be
+    Without this, the sensitivity table in README section 1 could be
     comparing two identical configurations.
     """
     from src.sensitivity import _minmax_windows
@@ -748,7 +749,7 @@ def test_cnn_architecture_is_not_affected_by_the_units_sweep():
 
 def test_tuning_grid_is_declared_not_searched():
     """The sweep must be a fixed grid; selecting a winner on the test set
-    would be the very error section 4.4 is about."""
+    would be model selection on the reporting data."""
     from src import tuning
 
     assert tuning.GRID[0] == (config.DEFAULT_UNITS, 20, config.SEQ_LENGTH)
@@ -819,7 +820,7 @@ def test_api_module_imports():
     reason="needs the committed weights for the default ticker",
 )
 def test_api_prediction_is_invariant_to_price_level():
-    """The scale-invariance claim in README section 4.1, checked end to end.
+    """The scale-invariance claim in README section 1, checked end to end.
 
     Feeding the same shape of window an order of magnitude cheaper must
     return an identical percentage move. This also exercises the real

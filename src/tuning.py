@@ -12,8 +12,8 @@ impossible to answer.
 
 So the same close-only experiment is repeated across a grid of capacities,
 training lengths and window lengths. The claim being tested is not "one of
-these configurations is best" - picking a winner on the test set is exactly
-the error section 4.4 warns about - but the weaker and more useful
+these configurations is best" - picking a winner on the test set would
+be model selection on the reporting data - but the weaker and more useful
 "no configuration in this range beats the naive persistence baseline".
 
 Design
@@ -193,7 +193,7 @@ def main():
     print("=" * 92)
     if not summary["beats_naive"].any():
         print("No configuration in this grid beats the naive baseline, so the negative")
-        print("result in section 3 is not an artefact of the capacity that was chosen.")
+        print("result is not an artefact of the capacity that was chosen.")
 
 
 if __name__ == "__main__":

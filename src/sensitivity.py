@@ -1,7 +1,7 @@
 """
 Sensitivity of the conclusion to the preprocessing regime.
 
-This module produces the table in README section 4.1. It trains the same
+This module produces the table in README section 1. It trains the same
 architecture on the same ticker and the same train/test split three times,
 changing only how the close price is normalised:
 

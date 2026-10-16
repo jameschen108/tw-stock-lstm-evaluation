@@ -28,6 +28,11 @@ the Taiwan market.
 
 Direction accuracy is 0.4971 over 1,524 out-of-sample trading days — a coin flip.
 
+These numbers come from the walk-forward evaluation in §4; direction accuracy there is
+the sign of the regression model's predicted move. Confidence intervals throughout are
+t-intervals over individual runs, which treats seeds trained on the same data as
+independent, so they are somewhat narrower than they should be.
+
 ![Walk-forward equity curves](reports/figures/equity_walkforward.png)
 
 ### Why "no change" is the baseline to beat
@@ -42,9 +47,12 @@ the baseline it loses to.
 | R² alone | 0.9841 | near perfect |
 | vs "no change" baseline | −0.0073 | slightly worse than doing nothing |
 | Direction accuracy vs 50% | 0.5184 | small edge |
-| Direction accuracy vs "always up" | −0.0101 | worse than always guessing up |
+| Direction accuracy vs majority class | −0.0101 | worse than always guessing the more common direction |
 
-Model RMSE is 7.5648; the baseline is 7.5504. That gap is the whole result.
+The two direction rows come from a separate up/down classifier trained on the same split
+(§2), not from the sign of the regression model. Skill is averaged per run rather than
+computed from RMSE averaged across stocks, because that average (model 7.5648, baseline
+7.5504) is dominated by 2330's price level.
 
 ## 1. What the model sees
 
@@ -127,7 +135,7 @@ evaluation, these particular indicators did not help.
 
 ## 3. LSTM, GRU or CNN?
 
-I ran the same study for all three. Skill vs the baseline, close-only:
+I ran the same study for all three. Skill vs the baseline, by feature set:
 
 | | close | technical | full |
 |---|---|---|---|
@@ -183,7 +191,7 @@ the same five stocks.)
 
 ## 5. Two things that fooled me
 
-**Exposure looks like skill.** On a single 2024–2026 split:
+**Exposure looks like skill.** On a single 2024–2026 split (one run, seed 42):
 
 | Arm | Time in market | Total return | Sharpe |
 |---|---|---|---|
@@ -192,7 +200,9 @@ the same five stocks.)
 
 That looks like a huge win for feature engineering. It isn't — §2 shows the two are
 statistically indistinguishable as predictors. The multi-feature model just says "up" more
-often, so it stays invested longer in a rising market.
+often, so it stays invested longer in a rising market. Under walk-forward (§4) the gap is
+smaller — 52.9% vs 57.9% of the time in the market — and most of the technical arm's
+higher average return there comes from a single seed (below).
 
 **One run tells you nothing.** Same model, same data, only the random seed changes:
 
@@ -201,8 +211,8 @@ often, so it stays invested longer in a rising market.
 | close | 78.6% | 175.1% | 81.1% |
 | technical | 119.1% | 105.4% | **306.1%** |
 
-105% to 306% from weight initialisation alone. This is why every number above is an
-average over multiple seeds with a confidence interval.
+105% to 306% from weight initialisation alone. This is why every other number in this
+README is an average over several seeds.
 
 I also checked that the result isn't just an undertrained model: 8 configurations from
 3.7k to 201k parameters, up to 60 epochs and 30-day windows. All negative, none beats the
